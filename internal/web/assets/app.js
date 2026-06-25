@@ -1,7 +1,9 @@
 "use strict";
 
 const $ = (id) => document.getElementById(id);
-const state = { canInvoke: false, defaultMetadata: [], services: [], current: null };
+// `cache` keeps each method's request, metadata, and last response keyed by
+// full method name, so switching methods (and coming back) preserves your work.
+const state = { canInvoke: false, defaultMetadata: [], services: [], current: null, cache: {} };
 
 async function api(path, opts) {
   const res = await fetch(path, opts);
@@ -101,7 +103,25 @@ function kindLabel(k) { return { unary: "unary", server: "server stream", client
 $("filter").addEventListener("input", (e) => renderTree(state.services, e.target.value));
 
 // ---- method panel -------------------------------------------------------
+// Snapshot the currently displayed method's editable fields and response so
+// they can be restored when the user navigates back to it.
+function saveCurrent() {
+  if (!state.current) return;
+  const statusEl = $("statusLine");
+  state.cache[state.current.method.fullName] = {
+    request: $("requestBody").value,
+    metadata: $("metadata").value,
+    responseHTML: $("response").innerHTML,
+    statusText: statusEl.textContent,
+    statusClass: statusEl.className,
+    metaHTML: $("metaOutBody").textContent,
+    metaHidden: $("metaOut").hidden,
+  };
+}
+
 async function selectMethod(fullName, el) {
+  if (state.current && state.current.method.fullName === fullName) return;
+  saveCurrent();
   document.querySelectorAll(".method.active").forEach((n) => n.classList.remove("active"));
   if (el) el.classList.add("active");
   try {
@@ -132,15 +152,30 @@ function showMethod(detail) {
         : "Server streaming — one request, multiple responses.")
     : "Edit the proto3-JSON request below.";
 
-  $("requestBody").value = skeleton(detail.request.fields);
-  $("metadata").value = state.defaultMetadata.join("\n");
-  resetResponse();
   renderSchema(detail.request);
+
+  // Restore this method's saved request/response if we've shown it before,
+  // otherwise start from a fresh skeleton and empty response.
+  const cached = state.cache[m.fullName];
+  if (cached) {
+    $("requestBody").value = cached.request;
+    $("metadata").value = cached.metadata;
+    $("response").innerHTML = cached.responseHTML;
+    $("statusLine").textContent = cached.statusText;
+    $("statusLine").className = cached.statusClass;
+    $("metaOutBody").textContent = cached.metaHTML;
+    $("metaOut").hidden = cached.metaHidden;
+  } else {
+    $("requestBody").value = skeleton(detail.request.fields);
+    $("metadata").value = state.defaultMetadata.join("\n");
+    resetResponse();
+  }
 
   $("invokeBtn").disabled = !state.canInvoke;
   $("invokeBtn").textContent = streaming ? "Invoke stream" : "Invoke";
   $("invokeBtn").title = state.canInvoke ? "" : "No target address configured (browse-only)";
   $("invokeBtn").onclick = () => (streaming ? invokeStream(m) : invokeUnary(m));
+  // Reset clears this method's request back to a fresh skeleton.
   $("resetBtn").onclick = () => ($("requestBody").value = skeleton(detail.request.fields));
 }
 
