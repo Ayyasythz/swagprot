@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>swagprot — gRPC Explorer</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo" aria-hidden="true">⬡</span>
+      <span class="brand-name">swagprot</span>
+      <span class="tag">gRPC Explorer</span>
+    </div>
+    <div class="topbar-right">
+      <span id="invokeBadge" class="conn"></span>
+      <button id="themeToggle" class="icon-btn" type="button" title="Toggle theme" aria-label="Toggle theme">
+        <span class="theme-icon"></span>
+      </button>
+    </div>
+  </header>
+
+  <div id="layout">
+    <aside id="sidebar">
+      <div class="search-wrap">
+        <span class="search-icon" aria-hidden="true">⌕</span>
+        <input id="filter" type="search" placeholder="Filter methods…" autocomplete="off" />
+      </div>
+      <div id="tree"></div>
+    </aside>
+
+    <main id="content">
+      <div id="empty" class="empty">
+        <div class="empty-logo">⬡</div>
+        <h2>Pick a method</h2>
+        <p>Select an RPC on the left to inspect its schema and try it out.</p>
+      </div>
+
+      <section id="panel" hidden>
+        <div class="method-head">
+          <span id="streamTag" class="chip"></span>
+          <h2 id="methodName"></h2>
+        </div>
+        <p id="methodTypes" class="io"></p>
+
+        <div class="cols">
+          <div class="card">
+            <div class="card-head">
+              <h3>Request</h3>
+              <button id="resetBtn" class="ghost" type="button">Reset</button>
+            </div>
+            <p id="requestHint" class="hint"></p>
+            <textarea id="requestBody" spellcheck="false"></textarea>
+
+            <details class="meta-block">
+              <summary>Metadata <span class="muted">— one <code>Key: value</code> per line</span></summary>
+              <textarea id="metadata" spellcheck="false" placeholder="authorization: Bearer …"></textarea>
+            </details>
+
+            <div class="actions">
+              <button id="invokeBtn" class="primary" type="button">Invoke</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head">
+              <h3>Response</h3>
+              <span id="statusLine" class="status"></span>
+            </div>
+            <pre id="response" class="response"><span class="placeholder">Response will appear here.</span></pre>
+            <details id="metaOut" hidden>
+              <summary>Headers &amp; trailers</summary>
+              <pre id="metaOutBody"></pre>
+            </details>
+          </div>
+        </div>
+
+        <details class="schema">
+          <summary>Request schema</summary>
+          <div id="schemaView"></div>
+        </details>
+      </section>
+    </main>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
