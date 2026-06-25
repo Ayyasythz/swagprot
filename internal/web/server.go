@@ -5,7 +5,7 @@ import (
 	"io/fs"
 	"net/http"
 
-	"github.com/bbyasyi/swagprot/internal/descsource"
+	"github.com/Ayyasythz/swagprot/internal/descsource"
 	"google.golang.org/grpc"
 )
 

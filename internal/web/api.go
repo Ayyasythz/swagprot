@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"sort"
 
-	"github.com/bbyasyi/swagprot/internal/invoke"
-	"github.com/bbyasyi/swagprot/internal/schema"
+	"github.com/Ayyasythz/swagprot/internal/invoke"
+	"github.com/Ayyasythz/swagprot/internal/schema"
 )
 
 func (s *Server) handleConfig(w http.ResponseWriter, r *http.Request) {

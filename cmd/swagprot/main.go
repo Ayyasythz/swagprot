@@ -12,7 +12,7 @@ import (
 	"runtime"
 	"time"
 
-	"github.com/bbyasyi/swagprot"
+	"github.com/Ayyasythz/swagprot"
 	"github.com/spf13/cobra"
 )
 

@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package greet;
 
-option go_package = "github.com/bbyasyi/swagprot/examples/greeter/greetpb";
+option go_package = "github.com/Ayyasythz/swagprot/examples/greeter/greetpb";
 
 import "google/protobuf/timestamp.proto";
 

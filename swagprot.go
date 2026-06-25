@@ -28,9 +28,9 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/bbyasyi/swagprot/internal/descsource"
-	"github.com/bbyasyi/swagprot/internal/invoke"
-	"github.com/bbyasyi/swagprot/internal/web"
+	"github.com/Ayyasythz/swagprot/internal/descsource"
+	"github.com/Ayyasythz/swagprot/internal/invoke"
+	"github.com/Ayyasythz/swagprot/internal/web"
 	"google.golang.org/grpc"
 )
 

@@ -18,7 +18,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/bbyasyi/swagprot"
+	"github.com/Ayyasythz/swagprot"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/adaptor"
 )

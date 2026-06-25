@@ -19,7 +19,7 @@ nesting) is supported.
 ## Install
 
 ```sh
-go install github.com/bbyasyi/swagprot/cmd/swagprot@latest
+go install github.com/Ayyasythz/swagprot/cmd/swagprot@latest
 ```
 
 ## CLI usage

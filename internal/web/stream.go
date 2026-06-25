@@ -3,7 +3,7 @@ package web
 import (
 	"net/http"
 
-	"github.com/bbyasyi/swagprot/internal/invoke"
+	"github.com/Ayyasythz/swagprot/internal/invoke"
 	"github.com/coder/websocket"
 	"github.com/coder/websocket/wsjson"
 )

@@ -262,7 +262,7 @@ const file_greeter_proto_rawDesc = "" +
 	"\bJAPANESE\x10\x032\x7f\n" +
 	"\aGreeter\x122\n" +
 	"\bSayHello\x12\x13.greet.HelloRequest\x1a\x11.greet.HelloReply\x12@\n" +
-	"\x0eSayHelloStream\x12\x19.greet.HelloStreamRequest\x1a\x11.greet.HelloReply0\x01B6Z4github.com/bbyasyi/swagprot/examples/greeter/greetpbb\x06proto3"
+	"\x0eSayHelloStream\x12\x19.greet.HelloStreamRequest\x1a\x11.greet.HelloReply0\x01B6Z4github.com/Ayyasythz/swagprot/examples/greeter/greetpbb\x06proto3"
 
 var (
 	file_greeter_proto_rawDescOnce sync.Once

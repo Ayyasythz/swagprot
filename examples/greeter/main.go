@@ -11,7 +11,7 @@ import (
 	"net"
 	"time"
 
-	"github.com/bbyasyi/swagprot/examples/greeter/greetpb"
+	"github.com/Ayyasythz/swagprot/examples/greeter/greetpb"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 	"google.golang.org/protobuf/types/known/timestamppb"

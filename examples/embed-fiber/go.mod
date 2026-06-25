@@ -1,10 +1,10 @@
 // Separate module so the swagprot core library does not depend on Fiber.
-module github.com/bbyasyi/swagprot/examples/embed-fiber
+module github.com/Ayyasythz/swagprot/examples/embed-fiber
 
 go 1.26.4
 
 require (
-	github.com/bbyasyi/swagprot v0.0.0
+	github.com/Ayyasythz/swagprot v0.0.0
 	github.com/gofiber/fiber/v2 v2.52.5
 )
 
@@ -33,4 +33,4 @@ require (
 	google.golang.org/protobuf v1.36.11 // indirect
 )
 
-replace github.com/bbyasyi/swagprot => ../..
+replace github.com/Ayyasythz/swagprot => ../..

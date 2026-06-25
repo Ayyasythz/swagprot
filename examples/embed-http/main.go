@@ -14,7 +14,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/bbyasyi/swagprot"
+	"github.com/Ayyasythz/swagprot"
 )
 
 func main() {
